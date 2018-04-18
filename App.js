@@ -1,15 +1,20 @@
 import React from 'react';
-import { sanFranciscoWeights } from 'react-native-typography'
 import { StyleSheet, Text, View } from 'react-native';
-import { text } from "./src/style/text";
+import {StackNavigator, TabNavigator} from "react-navigation";
+
+import AuthScreen from './src/screens/AuthScreen';
+import WelcomeScreen from './src/screens/WelcomeScreen';
 
 export default class App extends React.Component {
   render() {
+    const MainNavigator = TabNavigator ({
+      welcome: { screen: WelcomeScreen },
+      auth: { screen: AuthScreen }
+    });
+
     return (
       <View style={styles.container}>
-        <Text style={[sanFranciscoWeights.black, text.title1]}>Open up App.js to start working on your app!</Text>
-        <Text style={sanFranciscoWeights.medium}>Changes you make will automatically reload.</Text>
-        <Text style={sanFranciscoWeights.regular}>Shake your phone to open the developer menu.</Text>
+        <MainNavigator />
       </View>
     );
   }
@@ -18,8 +23,8 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    backgroundColor: '#ffff',
+    //alignItems: 'center',
     justifyContent: 'center',
   },
 });
