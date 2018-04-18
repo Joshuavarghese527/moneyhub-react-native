@@ -4,8 +4,10 @@ import {StackNavigator, TabNavigator} from "react-navigation";
 
 import AuthScreen from './src/screens/AuthScreen';
 import WelcomeScreen from './src/screens/WelcomeScreen';
-import CourseScreen  from './src/screens/CourseScreen'
-import SearchScreen  from './src/screens/SearchScreen'
+import CourseScreen  from './src/screens/CourseScreen';
+import SearchScreen  from './src/screens/SearchScreen';
+import SettingsScreen from './src/screens/SettingsScreen';
+import ReviewScreen from './src/screens/ReviewScreen';
 
 export default class App extends React.Component {
   render() {
@@ -15,7 +17,13 @@ export default class App extends React.Component {
       main: {
         screen: TabNavigator ({
           course: { screen: CourseScreen },
-          search: { screen: SearchScreen }
+          search: { screen: SearchScreen },
+          review: {
+            screen: StackNavigator ({
+              review: { screen: ReviewScreen },
+              settings: { screen: SettingsScreen }
+            })
+          }
         })
       }
     });
